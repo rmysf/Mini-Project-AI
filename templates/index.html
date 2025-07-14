@@ -1,0 +1,176 @@
+<!-- <!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Deteksi Kanker Kulit</title>
+  <link href="{{ url_for('static', filename='css/bootstrap.min.css') }}" rel="stylesheet">
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css" rel="stylesheet">
+  <style>
+    body {
+      background-color: #121212;
+      color: #FFFFFF;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    }
+    .card {
+      background-color: #1F1F1F;
+      border: none;
+      border-radius: 1rem;
+    }
+    .btn-primary {
+      background-color: #BB86FC;
+      border: none;
+    }
+    .btn-primary:hover {
+      background-color: #9f6ce0;
+    }
+    .form-control {
+      background-color: #2a2a2a;
+      color: white;
+      border: 1px solid #444;
+    }
+    .form-control:focus {
+      background-color: #2a2a2a;
+      color: white;
+      border-color: #BB86FC;
+      box-shadow: none;
+    }
+    .heading-glow {
+      color: #BB86FC;
+      text-shadow: 0 0 10px #BB86FC;
+    }
+  </style>
+</head>
+<body>
+  <div class="container py-5">
+    <div class="text-center mb-5">
+      <h1 class="display-4 fw-bold heading-glow animate__animated animate__fadeInDown">Deteksi Kanker Kulit</h1>
+      <p class="lead animate__animated animate__fadeInUp animate__delay-1s">Upload gambar kulitmu untuk mendeteksi potensi kanker.</p>
+    </div>
+    <div class="card shadow-lg p-5 animate__animated animate__zoomIn">
+      <form action="/predict" method="post" enctype="multipart/form-data">
+        <div class="mb-4">
+          <label for="image" class="form-label">Pilih Gambar Kulit</label>
+          <input class="form-control" type="file" name="image" id="image" accept="image/*" required>
+        </div>
+        <button type="submit" class="btn btn-primary w-100 py-2 fs-5">🔍 Deteksi Sekarang</button>
+      </form>
+    </div>
+  </div>
+</body>
+</html> -->
+
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <title>Deteksi Kanker Kulit - Beranda</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link href="{{ url_for('static', filename='css/bootstrap.min.css') }}" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Mulish:wght@400;600;700&display=swap" rel="stylesheet">
+
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      min-height: 100vh;
+      background: linear-gradient(135deg, #1c1c1c, #121212);
+      color: #ffffff;
+      font-family: 'Mulish', sans-serif;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      padding: 50px 20px;
+      text-align: center;
+    }
+
+    .hero-container {
+      max-width: 800px;
+      opacity: 0;
+      transform: translateY(20px);
+      animation: fadeInUp 1.2s ease-out forwards;
+    }
+
+    @keyframes fadeInUp {
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    h1 {
+      font-size: 2.1rem;
+      font-weight: 500;
+      color: #ffffff;
+    }
+
+    h2 {
+      font-size: 2.5rem;
+      font-weight: 700;
+      color: #BB86FC;
+      margin-top: 15px;
+    }
+
+    p {
+      font-size: 1.1rem;
+      color: #cccccc;
+      margin: 25px 0 40px;
+      line-height: 1.6;
+    }
+
+    .btn-utama {
+      background-color: #BB86FC;
+      color: #121212;
+      font-weight: 600;
+      padding: 12px 28px;
+      border-radius: 8px;
+      font-size: 1.1rem;
+      text-decoration: none;
+      transition: background-color 0.3s ease;
+    }
+
+    .btn-utama:hover {
+      background-color: #9f6ce0;
+      color: #ffffff;
+    }
+
+    .links {
+      font-size: 0.9rem;
+      color: #aaa;
+      margin-top: 25px;
+    }
+
+    .links a {
+      color: #BB86FC;
+      text-decoration: underline;
+      margin: 0 5px;
+    }
+
+    @media (min-width: 768px) {
+      h1 {
+        font-size: 2.4rem;
+      }
+
+      h2 {
+        font-size: 3rem;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <div class="hero-container">
+    <h1>Website AI Deteksi Kanker Kulit</h1>
+    <h2>Periksa Kondisi Kulitmu Sekarang</h2>
+    <p>
+      Unggah foto kulitmu dan biarkan sistem kami menganalisisnya menggunakan kecerdasan buatan.
+      Cocok untuk siapa saja yang peduli dengan kesehatan kulit.
+    </p>
+    <a href="/upload" class="btn-utama">🔎 Mulai Deteksi Sekarang</a>
+  </div>
+
+</body>
+</html>

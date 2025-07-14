@@ -1,0 +1,166 @@
+<!-- <!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <title>Hasil Deteksi Kanker Kulit</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link href="{{ url_for('static', filename='css/bootstrap.min.css') }}" rel="stylesheet">
+</head>
+<body class="bg-light">
+  <div class="container py-5">
+    <div class="text-center">
+      <h2 class="fw-bold mb-4">Hasil Deteksi Kanker Kulit</h2>
+
+      <img 
+        src="data:image/jpeg;base64,{{ image_data }}" 
+        alt="Gambar Kulit"
+        class="img-fluid rounded shadow mb-4"
+        style="max-width: 300px;"
+      >
+
+      <div class="alert alert-info text-start fs-5">
+        <p><strong>Prediksi:</strong> {{ prediction }}</p>
+        <p><strong>Akurasi:</strong> {{ confidence }}%</p>
+        <hr>
+        <p><strong>Penjelasan:</strong><br>{{ description }}</p>
+      </div>
+
+      <a href="/" class="btn btn-primary mt-3">🡐 Coba Lagi</a>
+    </div>
+  </div>
+</body>
+</html> -->
+
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <title>Hasil Deteksi Kanker Kulit</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link href="{{ url_for('static', filename='css/bootstrap.min.css') }}" rel="stylesheet">
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css" rel="stylesheet">
+  <style>
+    body {
+      background-color: #121212;
+      color: #ffffff;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    }
+
+    .heading-glow {
+      color: #BB86FC;
+      text-shadow: 0 0 10px #BB86FC;
+    }
+
+    .card-custom {
+      background-color: #1F1F1F;
+      border-radius: 1rem;
+      padding: 2rem;
+      box-shadow: 0 0 20px rgba(187, 134, 252, 0.2);
+    }
+
+    .image-preview {
+      max-width: 100%;
+      border-radius: 10px;
+      box-shadow: 0 0 15px rgba(187, 134, 252, 0.3);
+      margin-bottom: 1rem;
+    }
+
+    .result-info {
+      color: #ffffff;
+      background-color: #2a2a2a;
+      padding: 1rem 1.5rem;
+      border-radius: 1rem;
+      border: 1px solid #444;
+    }
+
+    .result-info p {
+      margin-bottom: 0.8rem;
+      font-size: 1.05rem;
+    }
+
+    .btn-primary {
+      background-color: #BB86FC;
+      border: none;
+    }
+
+    .btn-primary:hover {
+      background-color: #9f6ce0;
+    }
+
+    /* Layout untuk samping */
+    @media (min-width: 768px) {
+      .flex-md {
+        display: flex;
+        align-items: flex-start;
+        gap: 30px;
+      }
+
+      .image-preview {
+        max-width: 300px;
+      }
+
+      .typing {
+        white-space: pre-wrap;
+        font-size: 1.05rem;
+        line-height: 1.6;
+        min-height: 120px;
+      }
+
+      @keyframes blink {
+        0%, 100% { border-color: transparent; }
+        50% { border-color: #BB86FC; }
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="container py-5">
+    <div class="text-center animate__animated animate__fadeInDown">
+      <h2 class="display-5 fw-bold heading-glow">Hasil Deteksi Kanker Kulit</h2>
+    </div>
+
+    <div class="card-custom mx-auto mt-4 animate__animated animate__fadeInUp" style="max-width: 900px;">
+      <div class="flex-md">
+        {% if image_data %}
+          <div class="text-center">
+            <img 
+              src="data:image/jpeg;base64,{{ image_data }}" 
+              alt="Gambar Kulit"
+              class="img-fluid image-preview"
+            >
+          </div>
+        {% endif %}
+
+        <div class="result-info w-100">
+          <p><strong>🧪 Prediksi:</strong> {{ prediction }}</p>
+          <p><strong>📊 Akurasi:</strong> {{ confidence }}</p>
+          <hr>
+          <p><strong>📝 Penjelasan:</strong></p>
+          <div id="typing" class="typing"></div>
+        </div>
+      </div>
+
+      <div class="text-center mt-4">
+        <a href="/upload" class="btn btn-primary px-4 py-2 fs-5">🡐 Coba Lagi</a>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    // Animasi typing
+    const description = `{{ description|safe }}`;  // Pastikan Flask passing dengan aman
+    let i = 0;
+    const speed = 50; // kecepatan ketik
+
+    function typeWriter() {
+      if (i < description.length) {
+        document.getElementById("typing").innerHTML += description.charAt(i);
+        i++;
+        setTimeout(typeWriter, speed);
+      }
+    }
+
+    window.onload = typeWriter;
+  </script>
+</body>
+</html>
